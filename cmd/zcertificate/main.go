@@ -29,7 +29,7 @@ import (
 	"github.com/zmap/zcrypto/x509"
 )
 
-var ( //flags
+var (
 	outputFileName   string
 	workers          int
 	numProcs         int
