@@ -23,7 +23,7 @@ import (
 	"strings"
 	"sync"
 
-	zlint "github.com/cpu/yylint/v2"
+	zlint "github.com/cpu/yylint/v3"
 	log "github.com/sirupsen/logrus"
 	"github.com/zmap/zcertificate"
 	"github.com/zmap/zcrypto/x509"
@@ -72,7 +72,7 @@ func processCertificate(in <-chan []byte, out chan<- []byte, wg *sync.WaitGroup)
 		}
 
 		// The certificate was parsed. Run ZLint on it.
-		zlintResult := zlint.LintCertificate(parsed)
+		zlintResult := zlint.LintCertificateZ(parsed)
 		jsonResult, err := appendZLintToCertificate(parsed, zlintResult)
 		if err != nil {
 			log.Fatal("could not marshal output JSON")
